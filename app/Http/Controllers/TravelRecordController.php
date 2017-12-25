@@ -39,16 +39,16 @@ class TravelRecordController extends Controller
     {
         $params = $request->toArray();
         $params['owner'] = Auth::user()->name;
-        $params['location'] = '';
+
+
+        $dir_name = 'uploadfiles/' . date('Ymd');
         dump(Input::file('img'));
-
-        $img_obj = Input::file('img');
-
-        $img_obj->move('uploadfiles/' . date('Ymd'), $img_obj->getClientOriginalName());
-
+        $file_name = Input::file('img')->getClientOriginalName();
+        $params['location'] = $dir_name . '/' . $file_name;
+        Input::file('img')->move($dir_name, $file_name);
         $photo_obj = \App\TravelRecord::create($params);
+     
 
-        dump($photo_obj);
     }
 
     /**
