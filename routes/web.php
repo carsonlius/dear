@@ -19,9 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'TravelRecord'], function(){
+Route::group(['prefix' => 'TravelRecord'], function () {
+    Route::get('show/{id}', 'TravelRecordController@show');
     Route::get('create', 'TravelRecordController@create');
     Route::post('store', 'TravelRecordController@store');
+    Route::get('list', 'TravelRecordController@list');
 });
 
 

@@ -6,9 +6,9 @@
     {!! Form::open(array('url' => 'TravelRecord/store', 'method'=>'post', 'files'=> true)) !!}
     <div class="form-group">
         {!! Form::label('photo-type', '照片类型') !!}
-        {!! Form::select('type', ['beijing' => '北京', 'zhengzhou' => '郑州', 'luoyang'=> '洛阳', 'incoming' => '计划中'], 'beijing', ['class' => 'form-control']) !!}
+        {!! Form::select('type', $type_list, $type_first, ['class' => 'form-control']) !!}
 
-        {!! Form::label('protagonist', '主角') !!}
+        {!! Form::label('protagonist', '主角'); !!}
         {!! Form::text('protagonist', '彭彭', ['class' => 'form-control']) !!}
 
         {!! Form::label('title', '标题') !!}

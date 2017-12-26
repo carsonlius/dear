@@ -26,7 +26,9 @@ class TravelRecord extends FormRequest
         return [
             'title' => 'required|string|unique:travel_records|min:3',
             'content' => 'required|string|min:10',
-            'type' => 'required'
+            'type' => 'required',
+            'img' => 'required|image',
+            'shot_time' => 'required|date'
         ];
     }
 
@@ -35,7 +37,12 @@ class TravelRecord extends FormRequest
         return [
             'title.min' => '标题最少需要3 words',
             'title.unique' => '标题是唯一的',
-            'content.min' => '描述至少需要10 words'
+            'content.min' => '描述至少需要10 words',
+            'img.required' => '请上传文件',
+            'img.image' => '上传图片的类型无法识别',
+            'shot_time.required' => '请输入拍照时间',
+            'shot_time.date' => '拍照时间的格式不对'
+
         ];
     }
 }
