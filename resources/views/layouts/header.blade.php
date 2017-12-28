@@ -68,7 +68,6 @@
 	  class="archive category category-anytime category-387 not-mobile has-sidebar excerpted-posts primary-nav-fixed">
 <div id="inner-body">
 
-
 	<div id="outer-wrap-centered">
 
 		<div id="middle-wrap">
@@ -83,78 +82,56 @@
 
 							<ul class="primary-nav-menu suckerfish sc">
 
-								<li id="primary_nav_menu_item_6"
-									class="text-home mi-type-internal mi-home mi-anchor-text first-menu-item"
-									style="padding-top:17px;padding-bottom:10px;">
+								{{--<li id="primary_nav_menu_item_6" class="text-home mi-type-internal mi-home mi-anchor-text first-menu-item" style="padding-top:17px;padding-bottom:10px;">--}}
+									{{--<a href="http://lauramarchbanks.com" class="text-home mi-type-internal mi-home mi-anchor-text first-menu-item" title="Laura Marchbanks Photography: Seattle + Portland + San Francisco Wedding and Lifestyle Photography" rel="home">Home</a>--}}
+								{{--</li>--}}
+								{{--<li id="primary_nav_menu_item_13" class="text-website mi-type-manual mi-anchor-text"--}}
+									{{--style="padding-top:17px;padding-bottom:10px;">--}}
 
 
-									<a href="http://lauramarchbanks.com"
-									   class="text-home mi-type-internal mi-home mi-anchor-text first-menu-item"
-									   title="Laura Marchbanks Photography: Seattle + Portland + San Francisco Wedding and Lifestyle Photography"
-									   rel="home">Home</a>
+									{{--<a href="http://www.lauramarchbanks.com"--}}
+									   {{--class="text-website mi-type-manual mi-anchor-text" target="_blank">Website</a>--}}
 
-								</li>
-								<li id="primary_nav_menu_item_13" class="text-website mi-type-manual mi-anchor-text"
-									style="padding-top:17px;padding-bottom:10px;">
+								{{--</li>--}}
+								{{--<li id="primary_nav_menu_item_5" class="text-about-laura mi-type-manual mi-anchor-text"--}}
+									{{--style="padding-top:17px;padding-bottom:10px;">--}}
 
 
-									<a href="http://www.lauramarchbanks.com"
-									   class="text-website mi-type-manual mi-anchor-text" target="_blank">Website</a>
+									{{--<a href="http://www.lauramarchbanks.com/about"--}}
+									   {{--class="text-about-laura mi-type-manual mi-anchor-text">About Laura</a>--}}
 
-								</li>
-								<li id="primary_nav_menu_item_5" class="text-about-laura mi-type-manual mi-anchor-text"
-									style="padding-top:17px;padding-bottom:10px;">
-
-
-									<a href="http://www.lauramarchbanks.com/about"
-									   class="text-about-laura mi-type-manual mi-anchor-text">About Laura</a>
-
-								</li>
-								<li id="primary_nav_menu_item_2" class="text-galleries mi-type-manual mi-anchor-text"
-									style="padding-top:17px;padding-bottom:10px;">
-
-
-									<a href="http://www.lauramarchbanks.com/gallery-nav--one"
-									   class="text-galleries mi-type-manual mi-anchor-text">Galleries</a>
-
-								</li>
-								<li id="primary_nav_menu_item_12"
-									class="text-categories mi-type-internal mi-categories has-children mi-anchor-text"
-									style="padding-top:17px;padding-bottom:10px;">
-
-
-									<a href="#"
-									   class="text-categories mi-type-internal mi-categories has-children mi-anchor-text">Categories</a>
+								{{--</li>--}}
+								@foreach($node_list as $node)
+								{{--<li id="primary_nav_menu_item_2" class="text-galleries mi-type-manual mi-anchor-text" style="padding-top:17px;padding-bottom:10px;">--}}
+									{{--<a href="http://www.lauramarchbanks.com/gallery-nav--one" class="text-galleries mi-type-manual mi-anchor-text">{{ $node['name'] }}</a>--}}
+								{{--</li>--}}
+								<li id="primary_nav_menu_item_12" class="text-categories mi-type-internal mi-categories has-children mi-anchor-text" style="padding-top:17px;padding-bottom:10px;">
+									<a href="#" class="text-categories mi-type-internal mi-categories has-children mi-anchor-text">{{ $node['name'] }}</a>
 									<ul style="margin-top:10px;">
-										<li class="cat-item cat-item-387 current-cat"><a
-													href="http://lauramarchbanks.com/category/anytime/">ANYTIME</a>
+										<li class="cat-item cat-item-387 current-cat"><a href="http://lauramarchbanks.com/category/anytime/">ANYTIME</a>
 										</li>
-										<li class="cat-item cat-item-384"><a
-													href="http://lauramarchbanks.com/category/engagement/">ENGAGEMENT</a>
+										<li class="cat-item cat-item-384"><a href="http://lauramarchbanks.com/category/engagement/">ENGAGEMENT</a>
 										</li>
-										<li class="cat-item cat-item-838"><a
-													href="http://lauramarchbanks.com/category/film/">FILM</a>
+										<li class="cat-item cat-item-838"><a href="http://lauramarchbanks.com/category/film/">FILM</a>
 										</li>
-										<li class="cat-item cat-item-8"><a
-													href="http://lauramarchbanks.com/category/personal/">PERSONAL</a>
+										<li class="cat-item cat-item-8"><a href="http://lauramarchbanks.com/category/personal/">PERSONAL</a>
 										</li>
-										<li class="cat-item cat-item-1"><a
-													href="http://lauramarchbanks.com/category/uncategorized/">Uncategorized</a>
+										<li class="cat-item cat-item-1"><a href="http://lauramarchbanks.com/category/uncategorized/">Uncategorized</a>
 										</li>
-										<li class="cat-item cat-item-385"><a
-													href="http://lauramarchbanks.com/category/weddings/">WEDDINGS</a>
+										<li class="cat-item cat-item-385"><a href="http://lauramarchbanks.com/category/weddings/">WEDDINGS</a>
 										</li>
 									</ul>
 								</li>
-								<li id="primary_nav_menu_item_14"
-									class="text-contact mi-type-manual mi-anchor-text last-menu-item"
-									style="padding-top:17px;padding-bottom:10px;">
+								@endforeach
+								{{--<li id="primary_nav_menu_item_14"--}}
+									{{--class="text-contact mi-type-manual mi-anchor-text last-menu-item"--}}
+									{{--style="padding-top:17px;padding-bottom:10px;">--}}
 
 
-									<a href="http://app.shootq.com/public/~f575a/contact"
-									   class="text-contact mi-type-manual mi-anchor-text last-menu-item">Contact</a>
+									{{--<a href="http://app.shootq.com/public/~f575a/contact"--}}
+									   {{--class="text-contact mi-type-manual mi-anchor-text last-menu-item">Contact</a>--}}
 
-								</li>
+								{{--</li>--}}
 							</ul>
 						</nav>
 

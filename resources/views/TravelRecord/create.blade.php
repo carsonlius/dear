@@ -15,7 +15,8 @@
         {!! Form::text('title', null, ['class' => 'form-control']) !!}
 
         {!! Form::label('shot time', '拍摄时间') !!}
-        <input type="date" name="shot_time" value="" class="form-control">
+        {{--<input type="date" name="shot_time" value="" class="form-control">--}}
+        {!! Form::date('shot_time', \Carbon\Carbon::now(), ["class"=>"form-control"]); !!}
 
         {!! Form::label('content', '照片的描述') !!}
         {!! Form::textarea('content', null, ['class' => 'form-control']) !!}

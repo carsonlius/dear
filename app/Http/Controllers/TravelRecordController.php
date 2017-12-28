@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PhotoType;
 use App\TravelRecord;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class TravelRecordController extends Controller
      */
     public function index()
     {
-        //
+        $list_show  = (new TravelRecord)->latest()->get();
+        return view('TravelRecord.list')->with(compact('list_show'));
     }
 
     /**
@@ -27,8 +29,11 @@ class TravelRecordController extends Controller
      */
     public function create()
     {
-        $type_list = ['beijing' => '北京', 'zhengzhou' => '郑州', 'luoyang'=> '洛阳', 'hunan' => '湖南','incoming' => '计划中'];
+
+        $type_show = PhotoType::all()->toArray();
+        $type_list= array_column($type_show, 'name', 'label');
         $type_first = key($type_list);
+
         return view('TravelRecord.create', compact('type_first'))->with(compact('type_list'));
     }
 
@@ -52,7 +57,7 @@ class TravelRecordController extends Controller
 
         // gen data
         \App\TravelRecord::create($params);
-        return redirect('TravelRecord/list');
+        return redirect('TravelRecord/index');
     }
 
     /**
@@ -98,10 +103,5 @@ class TravelRecordController extends Controller
     public function destroy(TravelRecord $travelRecord)
     {
         //
-    }
-
-    public function list () {
-        $list_show  = \App\TravelRecord::all();
-        return view('TravelRecord.list')->with(compact('list_show'));
     }
 }

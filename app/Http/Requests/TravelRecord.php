@@ -24,7 +24,7 @@ class TravelRecord extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|unique:travel_records|min:3',
+            'title' => 'required|string|unique:travel_records|min:2',
             'content' => 'required|string|min:10',
             'type' => 'required',
             'img' => 'required|image',
@@ -35,7 +35,7 @@ class TravelRecord extends FormRequest
     public function messages()
     {
         return [
-            'title.min' => '标题最少需要3 words',
+            'title.min' => '标题最少需要2 words',
             'title.unique' => '标题是唯一的',
             'content.min' => '描述至少需要10 words',
             'img.required' => '请上传文件',
