@@ -23,11 +23,24 @@ class PhotoType extends FormRequest
      */
     public function rules()
     {
+        $route_name = \Request::route()->getName();
+        if ($route_name == 'store') {
+            return [
+                'name' => 'required|unique:photo_types,name',
+                'label' => 'required|unique:photo_types,label',
+                'status' => 'required|in:0,1'
+            ];
+        }
+        $id = request('id');
+
         return [
-            'name' => 'required|unique:photo_types,name',
-            'label' => 'required|unique:photo_types,label'
+            'id' => 'required|integer',
+            'name' => 'required|unique:photo_types,' . $id . ',name',
+            'label' => 'required|unique:photo_types,' . $id . ',label',
+            'status' => 'required|in:0,1'
         ];
     }
+
 
     public function messages()
     {
@@ -36,6 +49,8 @@ class PhotoType extends FormRequest
             'name.unique' => '类型名称不唯一',
             'label.required' => '请填充描述',
             'label.unique' => '描述不唯一',
+            'status.required' => '状态是必须的',
+            'status.in' => '状态的范围不是合法的'
         ];
     }
 }

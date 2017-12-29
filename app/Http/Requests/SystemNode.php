@@ -26,7 +26,7 @@ class SystemNode extends FormRequest
         return [
             'name' => 'required|unique:system_nodes,name|min:2',
             'label' => 'required|unique:system_nodes,label|min:2',
-            'node' => 'required|unique:system_nodes,node|min:2',
+            'node' => 'required|min:2',
             'pid' => 'required|integer',
             'listorder' => 'required|integer',
             'is_show' => 'required|in:0,1',
@@ -44,7 +44,6 @@ class SystemNode extends FormRequest
             'label.unique' => '节点描述是唯一的',
             'label.min' => '节点描述至少是2位',
             'node.required' => '请填写节点路径',
-            'node.unique' => '节点路径是唯一的',
             'node.min' => '节点路径至少是2位',
             'pid.required' => '请选择父节点',
             'pid.integer' => '父节点必须是数字',

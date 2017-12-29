@@ -6,6 +6,7 @@ use App\PhotoType;
 use App\TravelRecord;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -29,7 +30,6 @@ class TravelRecordController extends Controller
      */
     public function create()
     {
-
         $type_show = PhotoType::all()->toArray();
         $type_list= array_column($type_show, 'name', 'label');
         $type_first = key($type_list);
@@ -104,4 +104,18 @@ class TravelRecordController extends Controller
     {
         //
     }
+
+    public function typeShow()
+    {
+        $type = \Request::route()->getName();
+
+        $where = [];
+        if ($type != 'anyway') {
+            $where = [['type', $type]];
+        }
+
+        $travel_records = TravelRecord::where($where)->orderBy('shot_time')->get();
+        return view('TravelRecord.type_show')->with(compact('travel_records', 'type'));
+    }
+
 }

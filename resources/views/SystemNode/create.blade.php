@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <div class="form-group">
-        <span><h3>创建节点</h3></span>
+    <div class="box-header with-border form-group">
+        <span class="box-title content-header">创建节点</span>
+        <a href="{{ URL::to('SystemNode/index') }}"><span class="btn btn-sm btn-success" style="float: right">节点列表</span></a>
     </div>
     <div class="form-group">
     </div>

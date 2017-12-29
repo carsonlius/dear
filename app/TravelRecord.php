@@ -9,11 +9,14 @@ class TravelRecord extends Model
     protected $fillable = ['type', 'protagonist', 'owner', 'title', 'content', 'location', 'shot_time'];
     protected $dates = [
         'created_at',
-        'updated_at'
+        'updated_at',
+        'shot_time'
     ];
 
-//    protected $casts = [可以实现数据的转型 类似与访问器
-//        'shot_time' => ''
+
+
+//    protected $casts = [
+//        'shot_time' => 'date'
 //    ];
 
     

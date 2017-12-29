@@ -86,7 +86,7 @@ class SystemNodeController extends Controller
         $rule = [
             'name' => 'required|unique:system_nodes,name,' . $id . '|min:2',
             'label' => 'required|unique:system_nodes,label,' . $id . '|min:2',
-            'node' => 'required|unique:system_nodes,node,' . $id . '|min:2',
+            'node' => 'required|min:2',
             'pid' => 'required|integer',
             'listorder' => 'required|integer',
             'is_show' => 'required|in:0,1',
@@ -101,7 +101,6 @@ class SystemNodeController extends Controller
             'label.unique' => '节点描述是唯一的',
             'label.min' => '节点描述至少是2位',
             'node.required' => '请填写节点路径',
-            'node.unique' => '节点路径是唯一的',
             'node.min' => '节点路径至少是2位',
             'pid.required' => '请选择父节点',
             'pid.integer' => '父节点必须是数字',
@@ -118,12 +117,13 @@ class SystemNodeController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\SystemNode $systemNode
-     * @return \Illuminate\Http\Response
+     * @param SystemNode $systemNode
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
     public function destroy(SystemNode $systemNode)
     {
-        //
+        $systemNode->delete();
+        return redirect('SystemNode/index');
     }
 }

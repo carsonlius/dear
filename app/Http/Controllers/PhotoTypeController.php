@@ -14,7 +14,7 @@ class PhotoTypeController extends Controller
      */
     public function index()
     {
-        $list_show = (new PhotoType())->latest()->get();
+        $list_show = PhotoType::all();
         return view('PhotoType.index')->with(compact('list_show'));
     }
 
@@ -58,29 +58,31 @@ class PhotoTypeController extends Controller
      */
     public function edit(PhotoType $photoType)
     {
-        //
+        return view('PhotoType.edit')->with(compact('photoType'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PhotoType  $photoType
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\PhotoType $request
+     * @param PhotoType $photoType
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, PhotoType $photoType)
+    public function update(\App\Http\Requests\PhotoType $request, PhotoType $photoType)
     {
-        //
+        $id = request('id');
+        $photoType->where('id', $id)->update($photoType);
+        return redirect('PhotoType/index');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\PhotoType  $photoType
-     * @return \Illuminate\Http\Response
+     * @param PhotoType $photoType
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
     public function destroy(PhotoType $photoType)
     {
-        //
+        $photoType->delete();
+        return redirect('PhotoType/index');
     }
 }

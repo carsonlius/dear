@@ -9,7 +9,7 @@
     <div class="form-group">
         {!! Form::hidden('id', $systemNode->id) !!}
         {!! Form::label('pid', '父节点') !!}
-        {!! Form::select('pid', $node_first, 0, ['class' => 'form-control']) !!}
+        {!! Form::select('pid', $node_first, null, ['class' => 'form-control']) !!}
 
         <div class="form-group">
             {!! Form::label('name', '节点名称'); !!}
