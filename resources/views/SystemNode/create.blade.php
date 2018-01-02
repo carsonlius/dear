@@ -37,7 +37,7 @@
              {!! Form::radio('is_show', 1, true, ['class' => '']) !!}是
         </div>
 
-        {!! Form::submit('发表文章', ['class' => 'btn btn-success form-control']) !!}
+        {!! Form::submit('上传', ['class' => 'btn btn-success form-control']) !!}
         {{ Form::close() }}
     </div>
 

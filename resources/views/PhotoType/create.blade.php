@@ -14,7 +14,7 @@
         {!! Form::label('status', '状态'); !!}
         {!! Form::select('status', ['禁用', '可用'], 1, ['class' => 'form-control']) !!}
 
-        {!! Form::submit('发表文章', ['class' => 'btn btn-success form-control']) !!}
+        {!! Form::submit('上传', ['class' => 'btn btn-success form-control']) !!}
         {{ Form::close() }}
     </div>
 

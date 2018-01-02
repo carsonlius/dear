@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="description" content="Category Archives: ANYTIME - Seattle Wedding Photographer, Seattle Wedding Photography, Lifestyle and Fine Art Photography" />
 	<meta name="pinterest" content="nohover" />
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" id="fa-styles"/>
+	{!! Html::style('css/font-awesome.css?version=1.01', ['id' => 'fa-styles']) !!}
 
 	<!-- wp_head() elements -->
 	<link rel='dns-prefetch' href='//s.w.org' />
@@ -31,28 +31,32 @@
 	padding: 0 !important;
 	}
 	</style>
-	<link rel='stylesheet' id='sociablecss-css'  href='http://lauramarchbanks.com/wp-content/plugins/sociable/css/sociable.css?ver=4.9.1' type='text/css' media='all' />
+	{{ Html::style('css/sociable.css?ver=4.9.1', ['id' => 'sociablecss-css']) }}
 	<link rel='stylesheet' id='si-style-css'  href='http://lauramarchbanks.com/wp-content/plugins/showit/includes/public/css/showit.css?ver=0.3' type='text/css' media='all' />
-	<script src='http://lauramarchbanks.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
-	<script src='http://lauramarchbanks.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
-	<script src='http://lauramarchbanks.com/wp-content/plugins/sociable/js/sociable.js?ver=4.9.1'></script>
-	<script src='http://lauramarchbanks.com/wp-content/plugins/sociable/js/vuible.js?ver=4.9.1'></script>
-	<script src='http://lauramarchbanks.com/wp-content/plugins/sociable/js/addtofavorites.js?ver=4.9.1'></script>
-	<script src='http://lauramarchbanks.com/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+
+	{{ Html::script('js/jquery.js?ver=1.12.4') }}
+	{{ Html::script('js/jquery-migrate.min.js?ver=1.4.1') }}
+	{{ Html::script('js/sociable.js?ver=4.9.1') }}
+	{{ Html::script('js/vuible.js?ver=4.9.1') }}
+	{{ Html::script('js/vuible.js?addtofavorites.js?ver=4.9.1') }}
+	{{ Html::script('js/underscore.min.js?ver=1.8.3') }}
+
 	<script src='http://lauramarchbanks.com/wp-content/plugins/showit/includes/public/js/showit.js?ver=0.3'></script>
 	<link rel='https://api.w.org/' href='http://lauramarchbanks.com/wp-json/' />
 	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://lauramarchbanks.com/xmlrpc.php?rsd" />
 	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://lauramarchbanks.com/wp-includes/wlwmanifest.xml" /> 
 	<meta name="generator" content="WordPress 4.9.1" />
-	<script type='text/javascript'>var base_url_sociable = 'http://lauramarchbanks.com/wp-content/plugins/sociable/'</script><script src='http://apis.google.com/js/plusone.js'></script>
+	<script type='text/javascript'>var base_url_sociable = 'http://lauramarchbanks.com/wp-content/plugins/sociable/'</script>
+	{!! Html::script('js/plusone.js') !!}
 	<!-- END wp_head() elements -->
 
 	<!--[if lt IE 9]>
 		<script src="http://lauramarchbanks.com/wp-content/themes/prophoto5/js/html5shiv.js?ver=404"></script>
 	<![endif]-->
-	<script src="http://lauramarchbanks.com/wp-content/uploads/pp/static/1502248194_script.js"></script>
-	<link rel="stylesheet" href="http://lauramarchbanks.com/wp-content/uploads/pp/static/1502248194_style.css" type="text/css"/>
-	<link rel="stylesheet" href="http://lauramarchbanks.com/wp-content/uploads/pp/static/1502248194_retina.css" type="text/css" media="only screen and (-webkit-min-device-pixel-ratio: 1.5)"/>
+
+	{!! Html::script('js/1502248194_script.js') !!}
+	{!! Html::style('css/1502248194_style.css?version=1.01') !!}
+	{!! Html::style('css/1502248194_retina.css', ['media' => 'only screen and (-webkit-min-device-pixel-ratio: 1.5)']) !!}
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sanchez:400,italic|Libre+Baskerville:400,700" type="text/css"/>
 	<link rel="alternate" href="http://lauramarchbanks.com/feed/" type="application/rss+xml" title="Laura Marchbanks Photography: Seattle   Portland   San Francisco Wedding and Lifestyle Photography Posts RSS feed"/>
 	<link rel="pingback" href="http://lauramarchbanks.com/xmlrpc.php"/>
@@ -75,15 +79,10 @@
 			<div id="inner-wrap">
 
 				<header class="sc">
-					=========== 导航  ====
 					@include('layouts.nav')
-					===========
 					<div id="fixed-top-placeholder"></div>
-					===  标志 ====
-					===  标志end ====
 				</header>
 				<div id="contact-form" class="sc" style="display:none">
-
 
 				</div><!-- #contact-form-->
 				<table id="content-wrap">
@@ -91,63 +90,7 @@
 					<tr>
 
 						@yield('content')
-						===  文章部分结束 ===
-						===  侧边条开始开始 ===
-						<td id="sidebar" class="sidebar">
-
-							<ul>
-
-								<li id="pp-custom-icon-6" class="widget sc widget_pp-custom-icon">
-									<div class=""><img
-												src="http://lauramarchbanks.com/wp-content/uploads/pp/images/widget_custom_image_1_1455078250.png"
-												class="pp-custom-icon" width="180" height="239" alt=""/></div>
-								</li>
-								<li id="pp-text-4" class="widget widget_pp-text">
-									<div class="pp-text-widget-wrap left"><h3 class='widgettitle'>I&#8217;m Laura</h3>
-										<p>Hi there! I'm Laura. I am an artist, small business owner, wife to my husband
-											Billy, a mama to my two precious babies Brady and Julianna and fur-baby
-											Lady, a lover of family, travel, food, beer, getting out and lounging in. I
-											adore my friends, holidays, classic films, historical fiction, and if J Crew
-											makes it I probably want to own it. My life is crazy, busy, full of fun. I
-											photograph life's joy-filled moments. </p>
-									</div>
-								</li>
-
-								<li id="search-6" class="widget widget_search"><h3 class='widgettitle'>FIND IT</h3>
-									<form action="http://lauramarchbanks.com" method="get" accept-charset="utf-8"><input
-												type="text" name="s" value="" class="pp-search-input" size="12"/><input
-												type="submit" value="Go" class="pp-search-submit"/></form>
-								</li>
-								==== 分类开始  ====
-								<li id="categories-6" class="widget widget_categories"><h3 class='widgettitle'>
-										Categories</h3>
-									<ul>
-										<li class="cat-item cat-item-387 current-cat"><a
-													href="http://lauramarchbanks.com/category/anytime/">ANYTIME</a>
-										</li>
-										<li class="cat-item cat-item-384"><a
-													href="http://lauramarchbanks.com/category/engagement/">ENGAGEMENT</a>
-										</li>
-										<li class="cat-item cat-item-838"><a
-													href="http://lauramarchbanks.com/category/film/">FILM</a>
-										</li>
-										<li class="cat-item cat-item-8"><a
-													href="http://lauramarchbanks.com/category/personal/">PERSONAL</a>
-										</li>
-										<li class="cat-item cat-item-1"><a
-													href="http://lauramarchbanks.com/category/uncategorized/">Uncategorized</a>
-										</li>
-										<li class="cat-item cat-item-385"><a
-													href="http://lauramarchbanks.com/category/weddings/">WEDDINGS</a>
-										</li>
-									</ul>
-								</li>
-								== 分类结束 ===
-
-								</li>
-							</ul>
-
-						</td>
+						@include('layouts.protagonist')
 
 					</tr>
 
@@ -161,8 +104,7 @@
 							WordPress Theme</a> <a href="http://tonicsiteshop.com">DESIGN BY TONIC SITE SHOP</a></p>
 
 					<div id="wp-footer-action-output">
-						<script type='text/javascript'
-								src='http://lauramarchbanks.com/wp-includes/js/wp-embed.min.js?ver=4.9.1'></script>
+						{!! Html::script('js/wp-embed.min.js') !!}
 					</div>
 
 				</div><!-- #copyright-footer -->

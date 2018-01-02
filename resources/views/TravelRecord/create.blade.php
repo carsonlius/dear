@@ -24,7 +24,7 @@
         {!! Form::label('img', '上传文件') !!}
         {!! Form::file('img', ['class' => 'form-control']) !!}
 
-        {!! Form::submit('发表文章', ['class' => 'btn btn-success form-control']) !!}
+        {!! Form::submit('上传', ['class' => 'btn btn-success form-control']) !!}
         {{ Form::close() }}
     </div>
 

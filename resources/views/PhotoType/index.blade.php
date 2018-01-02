@@ -19,8 +19,8 @@
                         <td>{!! $show['name'] !!}</td>
                         <td>{!! $show['label'] !!}</td>
                         <td>
-                            <span class="">{!! Html::link('PhotoType/edit/' . $show['id'], '编辑') !!}</span>
-                            <span class="">{!! Html::link('PhotoType/destroy/' . $show['id'], '删除') !!}</span>
+                            <span class="btn btn-sm">{!! Html::link('PhotoType/edit/' . $show['id'], '编辑') !!}</span>
+                            <span class="btn btn-sm but-error">{!! Html::link('PhotoType/destroy/' . $show['id'], '删除') !!}</span>
                         </td>
                     </tr>
                 @endforeach
