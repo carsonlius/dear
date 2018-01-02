@@ -20,11 +20,11 @@
                         <td>{!! $show['id'] !!}</td>
                         <td>{!! $show['name'] !!}</td>
                         <td>{!! $show['name_en'] !!}</td>
-                        <td>{!! $show['intro'] !!}</td>
+                        <td width="40%">{!! $show['intro'] !!}</td>
                         <td style="width: 40px;height: 40px">{!! Html::image($show['location'], '', ['width' => '100px', 'height' => '200px']); !!}</td>
                         <td>
-                            <span class="">{!! Html::link('Protagonist/edit/' . $show['id'], '编辑') !!}</span>
-                            <span class="">{!! Html::link('Protagonist/destroy/' . $show['id'], '删除') !!}</span>
+                            {!! Html::link('Protagonist/edit/' . $show['id'], '编辑', ['class' => 'btn btn-sm btn-info']) !!}
+                            {!! Html::link('Protagonist/destroy/' . $show['id'], '删除', ['class' => 'btn btn-sm btn-info']) !!}
                         </td>
                     </tr>
                 @endforeach

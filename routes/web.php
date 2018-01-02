@@ -50,8 +50,9 @@ Route::group(['prefix' => 'SystemNode'], function () {
 // gen protagonist
 Route::group(['prefix' => 'Protagonist'], function () {
     Route::get('create', 'ProtagonistController@create');
+    Route::get('index', 'ProtagonistController@index');
+    Route::get('edit/{protagonist}', 'ProtagonistController@edit');
+    Route::get('destroy/{protagonist}', 'ProtagonistController@destroy');
     Route::post('store', 'ProtagonistController@store');
     Route::post('update', 'ProtagonistController@update');
-    Route::get('index', 'ProtagonistController@index');
-    Route::get('edit', 'ProtagonistController@edit');
 });

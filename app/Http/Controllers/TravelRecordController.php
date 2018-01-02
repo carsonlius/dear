@@ -114,7 +114,7 @@ class TravelRecordController extends Controller
             $where = [['type', $type]];
         }
 
-        $travel_records = TravelRecord::where($where)->orderBy('shot_time')->get();
+        $travel_records = TravelRecord::where($where)->orderBy('shot_time')->paginate(3);
         return view('TravelRecord.type_show')->with(compact('travel_records', 'type'));
     }
 

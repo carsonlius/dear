@@ -9,8 +9,11 @@
 	<meta name="description" content="Category Archives: ANYTIME - Seattle Wedding Photographer, Seattle Wedding Photography, Lifestyle and Fine Art Photography" />
 	<meta name="pinterest" content="nohover" />
 	{!! Html::style('css/font-awesome.css?version=1.01', ['id' => 'fa-styles']) !!}
+	{!! Html::style('css/bootstrap.css') !!}
+	{!! Html::style('css/app.css') !!}
 
-	<!-- wp_head() elements -->
+
+<!-- wp_head() elements -->
 	<link rel='dns-prefetch' href='//s.w.org' />
 	<link rel="alternate" type="application/rss+xml" title="Laura Marchbanks Photography: Seattle + Portland + San Francisco Wedding and Lifestyle Photography &raquo; ANYTIME Category Feed" href="http://lauramarchbanks.com/category/anytime/feed/" />
 		<script type="text/javascript">
@@ -86,9 +89,7 @@
 
 				</div><!-- #contact-form-->
 				<table id="content-wrap">
-
 					<tr>
-
 						@yield('content')
 						@include('layouts.protagonist')
 
@@ -97,11 +98,7 @@
 				</table>
 				<div id="copyright-footer" class="content-bg">
 
-					<p id="user-copyright">
-						&copy; 2017 Laura Marchbanks Photography: Seattle + Portland + San Francisco Wedding and
-						Lifestyle Photography<span class="pipe">|</span><a href="https://pro.photo/"
-																		   title="ProPhoto Photo Website">ProPhoto5
-							WordPress Theme</a> <a href="http://tonicsiteshop.com">DESIGN BY TONIC SITE SHOP</a></p>
+					<p id="user-copyright"> &copy; 2017 献给我唯一的挚爱</p>
 
 					<div id="wp-footer-action-output">
 						{!! Html::script('js/wp-embed.min.js') !!}

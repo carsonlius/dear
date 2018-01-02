@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $travel_records = TravelRecord::orderBy('shot_time')->get();
+        $travel_records = TravelRecord::orderBy('shot_time')->paginate(3);
         return view('home')->with(compact('travel_records'));
     }
 }

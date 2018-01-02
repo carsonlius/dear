@@ -67,7 +67,7 @@ class ProtagonistController extends Controller
      */
     public function edit(Protagonist $protagonist)
     {
-        //
+        return view('Protagonist.edit')->with(compact('protagonist'));
     }
 
     /**
@@ -77,19 +77,20 @@ class ProtagonistController extends Controller
      * @param  \App\Protagonist  $protagonist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Protagonist $protagonist)
+    public function update(\App\Http\Requests\Protagonist $request, Protagonist $protagonist)
     {
-        //
+        $protagonist->where('id',$request->id)->update($request->toArray());
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Protagonist  $protagonist
-     * @return \Illuminate\Http\Response
+     * @param Protagonist $protagonist
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
     public function destroy(Protagonist $protagonist)
     {
-        //
+        $protagonist->delete();
+        return redirect('Protagonist/index');
     }
 }
