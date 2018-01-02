@@ -13,3 +13,4 @@ yarn-error.log
 public/uploadfiles
 nginx_errror.log
 nginx_access.log
+note/*

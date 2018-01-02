@@ -8,7 +8,12 @@
             {{-- 普通节点的展示 --}}
             @foreach($SystemNodeModel->nodeList() as $node)
                 <li id="primary_nav_menu_item_12" class="text-categories mi-type-internal mi-categories has-children mi-anchor-text" style="padding-top:17px;padding-bottom:10px;">
-                    <a href="#" class="text-categories mi-type-internal mi-categories has-children mi-anchor-text">{{ $node['name'] }}</a>
+                    @if($node['node'] == 'home')
+                        {!! Html::link($node['node'], $node['name'], ['class'=> 'text-categories mi-type-internal mi-categories has-children mi-anchor-text']) !!}
+                    @else
+                        {!! Html::link("#", $node['name'], ['class'=> 'text-categories mi-type-internal mi-categories has-children mi-anchor-text']) !!}
+                    @endif
+
                     @if(isset($node['child']))
                         <ul style="margin-top:10px;">
                             @foreach($node['child'] as $child)
