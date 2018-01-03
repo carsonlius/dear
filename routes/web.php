@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 Auth::routes();
@@ -9,12 +9,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // gen introduction node
-Route::get('/introduction', function(){
+Route::middleware('auth')->get('/introduction', function(){
     return view('Introduction.index');
 });
 
 // gen photo resource
-Route::group(['prefix' => 'TravelRecord'], function () {
+Route::group(['prefix' => 'TravelRecord', 'middleware' => 'auth'], function () {
     Route::get('show/{id}', 'TravelRecordController@show');
     Route::get('create', 'TravelRecordController@create');
     Route::get('index', 'TravelRecordController@index');
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'TravelRecord'], function () {
 });
 
 // gen photo type
-Route::group(['prefix' => 'PhotoType'], function () {
+Route::group(['prefix' => 'PhotoType', 'middleware' => 'auth'], function () {
     Route::get('index', 'PhotoTypeController@index');
     Route::get('create', 'PhotoTypeController@create');
     Route::get('edit/{photoType}', 'PhotoTypeController@edit');
@@ -41,7 +41,7 @@ Route::group(['prefix' => 'PhotoType'], function () {
 });
 
 // gen node
-Route::group(['prefix' => 'SystemNode'], function () {
+Route::group(['prefix' => 'SystemNode', 'middleware' => 'auth'], function () {
     Route::get('create', 'SystemNodeController@create');
     Route::get('index', 'SystemNodeController@index');
     Route::get('edit/{systemNode}', 'SystemNodeController@edit');
@@ -53,7 +53,7 @@ Route::group(['prefix' => 'SystemNode'], function () {
 });
 
 // gen protagonist
-Route::group(['prefix' => 'Protagonist'], function () {
+Route::group(['prefix' => 'Protagonist', 'middleware' => 'auth'], function () {
     Route::get('create', 'ProtagonistController@create');
     Route::get('index', 'ProtagonistController@index');
     Route::get('edit/{protagonist}', 'ProtagonistController@edit');
