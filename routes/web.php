@@ -8,6 +8,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// gen introduction node
+Route::get('/introduction', function(){
+    return view('Introduction.index');
+});
+
 // gen photo resource
 Route::group(['prefix' => 'TravelRecord'], function () {
     Route::get('show/{id}', 'TravelRecordController@show');
