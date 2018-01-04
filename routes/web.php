@@ -8,8 +8,41 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// gen role
+Route::group(['prefix' => 'Role', 'middleware' => 'auth'], function () {
+    Route::get('create', 'RoleController@create');
+    Route::get('index', 'RoleController@index');
+
+});
+
+// gen the relationship between role and user
+Route::group(['prefix' => 'RoleUser', 'middleware' => 'auth'], function () {
+    Route::get('create', 'RoleUserController@create');
+    Route::get('index', 'RoleUserController@index');
+});
+
+//gen the permission
+Route::group(['prefix' => 'Permission', 'middleware' => 'auth'], function () {
+    Route::get('index', 'PermissionController@index');
+    Route::get('create', 'PermissionController@create');
+});
+
+// gen the relationship between permission and role
+Route::group(['prefix' => 'PermissionUser', 'middleware' => 'auth'], function(){
+    Route::get('index', 'PermissionUserController@index');
+    Route::get('create', 'PermissionUserController@create');
+});
+
+// gen the relation  between permission and role
+Route::group(['prefix' => 'PermissionRole', 'middleware' => 'auth'], function(){
+    Route::get('index', 'PermissionRoleController@index');
+    Route::get('create', 'PermissionRoleController@create');
+});
+
+
+
 // gen introduction node
-Route::middleware('auth')->get('/introduction', function(){
+Route::middleware('auth')->get('/introduction', function () {
     return view('Introduction.index');
 });
 
