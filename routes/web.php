@@ -4,6 +4,7 @@ Route::get('/', function () {
     return redirect('login');
 });
 
+// auth route
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -12,7 +13,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'Role', 'middleware' => 'auth'], function () {
     Route::get('create', 'RoleController@create');
     Route::get('index', 'RoleController@index');
+    Route::get('edit/{role}', 'RoleController@edit');
+    Route::get('destroy/{role}', 'RoleController@destroy');
 
+    Route::post('update', 'RoleController@update')->name('role_update');
+    Route::post('store', 'RoleController@store');
 });
 
 // gen the relationship between role and user
@@ -25,6 +30,11 @@ Route::group(['prefix' => 'RoleUser', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => 'Permission', 'middleware' => 'auth'], function () {
     Route::get('index', 'PermissionController@index');
     Route::get('create', 'PermissionController@create');
+    Route::get('edit/{permissions}', 'PermissionController@edit');
+    Route::get('destroy/{permission}', 'PermissionController@destroy');
+
+    Route::post('update', 'PermissionController@update');
+    Route::post('store', 'PermissionController@store');
 });
 
 // gen the relationship between permission and role
@@ -38,8 +48,6 @@ Route::group(['prefix' => 'PermissionRole', 'middleware' => 'auth'], function(){
     Route::get('index', 'PermissionRoleController@index');
     Route::get('create', 'PermissionRoleController@create');
 });
-
-
 
 // gen introduction node
 Route::middleware('auth')->get('/introduction', function () {

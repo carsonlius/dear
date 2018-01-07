@@ -14,7 +14,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return Permission::all();
+        $list_show = Permission::all();
+        return view('permission.index')->with(compact('list_show'));
     }
 
     /**
@@ -24,29 +25,19 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        Permission::create([
-            'name' => 'Create users',
-            'slug' => 'create.users',
-            'description' => '',
-        ]);
-
-        Permission::create([
-            'name' => 'Delete users',
-            'slug' => 'delete.users',
-        ]);
-
-        return redirect('Permission/index');
+        return view('permission.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\Permission $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\Permission $request)
     {
-
+        Permission::create($request->except('_token'));
+        return redirect('Permission/index');
     }
 
     /**
@@ -63,34 +54,35 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Permission $permissions
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permissions)
     {
-        //
+        return view('permission.edit')->with(compact('permissions'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\Permission $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(\App\Http\Requests\Permission $request)
     {
-        //
+        Permission::where('id', request('id'))->update($request->except('_token'));
+        return redirect('Permission/index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Permission $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
+        return redirect('Permission/index');
     }
 }
