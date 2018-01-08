@@ -17,7 +17,21 @@ class RoleUserController extends Controller
      */
     public function index()
     {
-        return RoleUser::all();
+        $list_show = User::all()->toArray();
+        $roles = array_column(Role::all()->toArray(), null, 'id');
+        $user_roles_relation = RoleUser::all()->toArray();
+        $user_roles_relation = array_column($user_roles_relation, null, 'user_id');
+
+        foreach ($list_show as &$user) {
+            if (!isset($user_roles_relation[$user['id']])) {
+                $user['role_name'] = '等待配置角色';
+                continue;
+            }
+            $role_id = $user_roles_relation[$user['id']]['role_id'];
+            $user['role_name'] = $roles[$role_id]['name'];
+        }
+
+        return view('RoleUser.index')->with(compact('list_show'));
     }
 
     /**
@@ -27,11 +41,12 @@ class RoleUserController extends Controller
      */
     public function create()
     {
-        $user_collection = User::find(\request('id', Auth::id()));
-        $role_collection = Role::find(2);
-        $user_collection->attachRole($role_collection);
+        $list_show = RoleUser::where('id', request('id'))->toArray();
+        $roles_list = Role::all()->toArray();
+        
 
-        return redirect('RoleUser/index');
+
+        return view('RoleUser.edit')->with();
     }
 
     /**

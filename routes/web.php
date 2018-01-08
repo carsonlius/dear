@@ -22,8 +22,11 @@ Route::group(['prefix' => 'Role', 'middleware' => 'auth'], function () {
 
 // gen the relationship between role and user
 Route::group(['prefix' => 'RoleUser', 'middleware' => 'auth'], function () {
-    Route::get('create', 'RoleUserController@create');
+    Route::get('edit', 'RoleUserController@edit');
     Route::get('index', 'RoleUserController@index');
+
+
+    Route::post('store', 'RoleUserController@store');
 });
 
 //gen the permission
