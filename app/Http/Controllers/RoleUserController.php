@@ -6,6 +6,7 @@ use App\RoleUser;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Ultraware\Roles\Models\Role;
 
 class RoleUserController extends Controller
@@ -41,12 +42,7 @@ class RoleUserController extends Controller
      */
     public function create()
     {
-        $list_show = RoleUser::where('id', request('id'))->toArray();
-        $roles_list = Role::all()->toArray();
-        
 
-
-        return view('RoleUser.edit')->with();
     }
 
     /**
@@ -73,25 +69,32 @@ class RoleUserController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $role_list = array_column(Role::all()->toArray(), null, 'id');
+        $user_list = array_column(User::all()->toArray(), null, 'id');
+        $user_show = $user_list[request('id')];
+
+        $role_user = RoleUser::where('user_id', request('id'))->first();
+        $role_user = $role_user ? $role_user->toArray() : ['role_id' => 'none'];
+
+        return view('RoleUser.edit')->with(compact('user_show', 'role_list', 'role_user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\RoleUser $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(\App\Http\Requests\RoleUser $request)
     {
-        //
+        //　create when not exists
+        $user_id = request('user_id');
+        RoleUser::updateOrCreate(['user_id' => $user_id], $request->except(['_token', 'name']));
+        return redirect('RoleUser/index');
     }
 
     /**

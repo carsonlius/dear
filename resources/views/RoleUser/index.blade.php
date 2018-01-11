@@ -3,6 +3,7 @@
     <div class="box">
         <div class="box-header with-border form-group">
             <span class="box-title content-header">用户管理</span>
+            <a href="{{ URL::to('home') }}"><span class="btn btn-sm btn-success" style="float: right">首页</span></a>
         </div>
         <div class="box-body form-group">
             <table class="table table-bordered">
@@ -20,8 +21,7 @@
                         <td>{!! $show['email'] !!}</td>
                         <td>{!! $show['role_name'] !!}</td>
                         <td>
-                            <span class="btn btn-sm">{!! Html::link('RoleUser/edit/' . $show['id'], '编辑') !!}</span>
-                            <span class="btn btn-sm but-error">{!! Html::link('RoleUser/destroy/' . $show['id'], '删除') !!}</span>
+                            <span class="btn btn-sm">{!! Html::link('RoleUser/edit?id=' . $show['id'], '编辑') !!}</span>
                         </td>
                     </tr>
                 @endforeach
