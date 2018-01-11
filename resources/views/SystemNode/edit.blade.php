@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.nav_without_right_side')
 @section('content')
     <div class="form-group">
         <span><h3>编辑节点</h3></span>

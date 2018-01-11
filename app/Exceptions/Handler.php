@@ -4,6 +4,9 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Ultraware\Roles\Exceptions\LevelDeniedException;
+use Ultraware\Roles\Exceptions\PermissionDeniedException;
+use Ultraware\Roles\Exceptions\RoleDeniedException;
 
 class Handler extends ExceptionHandler
 {
@@ -48,6 +51,21 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        // check permissions
+        if ($exception instanceof RoleDeniedException) {
+
+            return redirect()->back();
+        }
+
+        if ($exception instanceof PermissionDeniedException) {
+            return redirect()->back();
+        }
+
+        if ($exception instanceof LevelDeniedException) {
+            return redirect()->back();
+        }
+
         return parent::render($request, $exception);
     }
 }

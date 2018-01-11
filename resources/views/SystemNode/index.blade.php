@@ -1,20 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.nav_without_right_side')
 @section('content')
     <div class="box">
         <div class="box-header with-border form-group">
-                <span class="box-title content-header">节点列表</span>
-                <a href="{{ URL::to('SystemNode/create') }}"><span class="btn btn-sm btn-success" style="float: right">添加节点</span></a>
+                <span class="box-title content-header">菜单列表</span>
+                <a href="{{ URL::to('SystemNode/create') }}"><span class="btn btn-sm btn-success" style="float: right">添加菜单</span></a>
         </div>
         <div class="box-body form-group">
             <table class="table table-bordered">
                 <tr>
                     <th>ID</th>
-                    <th>节点名称</th>
-                    <th>节点描述</th>
-                    <th>节点Route</th>
-                    <th>节点是否展示</th>
-                    <th>节点排序</th>
-                    <th>父级节点</th>
+                    <th>菜单名称</th>
+                    <th>菜单描述</th>
+                    <th>菜单Route</th>
+                    <th>菜单是否展示</th>
+                    <th>菜单排序</th>
+                    <th>父级菜单</th>
                     <th>操作</th>
                 </tr>
                 @foreach($list_show as $show)

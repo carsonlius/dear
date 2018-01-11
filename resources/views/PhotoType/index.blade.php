@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.nav_without_right_side')
 @section('content')
     <div class="box">
         <div class="box-header with-border form-group">
@@ -27,6 +27,4 @@
             </table>
         </div>
     </div>
-
-
 @endsection

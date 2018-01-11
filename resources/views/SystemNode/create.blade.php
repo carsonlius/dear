@@ -1,33 +1,33 @@
-@extends('layouts.app')
+@extends('layouts.nav_without_right_side')
 @section('content')
     <div class="box-header with-border form-group">
-        <span class="box-title content-header">创建节点</span>
-        <a href="{{ URL::to('SystemNode/index') }}"><span class="btn btn-sm btn-success" style="float: right">节点列表</span></a>
+        <span class="box-title content-header">创建菜单</span>
+        <a href="{{ URL::to('SystemNode/index') }}"><span class="btn btn-sm btn-success" style="float: right">菜单列表</span></a>
     </div>
     <div class="form-group">
     </div>
     {!! Form::open(array('url' => 'SystemNode/store', 'method'=>'post')) !!}
     <div class="form-group">
-        {!! Form::label('pid', '父节点') !!}
+        {!! Form::label('pid', '父菜单') !!}
         {!! Form::select('pid', $node_first, 0, ['class' => 'form-control']) !!}
 
         <div class="form-group">
-            {!! Form::label('name', '节点名称'); !!}
+            {!! Form::label('name', '菜单名称'); !!}
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
         </div>
 
         <div>
-            {!! Form::label('label', '节点描述'); !!}
+            {!! Form::label('label', '菜单描述'); !!}
             {!! Form::text('label', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('node', '节点控制'); !!}
+            {!! Form::label('node', '菜单控制'); !!}
             {!! Form::text('node', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('listorder', '同级节点排序') !!}
+            {!! Form::label('listorder', '同级菜单排序') !!}
             {!! Form::text('listorder', 0 , ['class' => 'form-control', 'placeholder' => '值越大 则排序越靠前']) !!}
         </div>
 
