@@ -1,6 +1,8 @@
 @extends('layouts.nav_without_right_side');
 @section('content')
-    <div class="form-group">
+    <div class="box-header with-border form-group">
+        <span class="box-title content-header">创建照片类型</span>
+        <a href="{{ URL::to('PhotoType/index') }}"><span class="btn btn-sm btn-success" style="float: right">照片类型列表</span></a>
     </div>
     {!! Form::open(array('url' => 'PhotoType/store', 'method'=>'post')) !!}
     <div class="form-group">

@@ -1,7 +1,10 @@
 @extends('layouts.nav_without_right_side');
 @section('content')
-    <div class="form-group">
+    <div class="box-header with-border form-group">
+        <span class="box-title content-header">创建照片类型</span>
+        <a href="{{ URL::to('PhotoType/index') }}"><span class="btn btn-sm btn-success" style="float: right">照片类型列表</span></a>
     </div>
+
     {!! Form::model($photoType, array('url' => 'PhotoType/update', 'method'=>'post')) !!}
     <div class="form-group">
         {!! Form::hidden('id', $photoType->id) !!}
@@ -14,7 +17,7 @@
         {!! Form::label('label', '类型描述'); !!}
         {!! Form::text('label', null, ['class' => 'form-control']) !!}
 
-        {!! Form::submit('发表文章', ['class' => 'btn btn-success form-control']) !!}
+        {!! Form::submit('上传', ['class' => 'btn btn-success form-control']) !!}
         {{ Form::close() }}
     </div>
 

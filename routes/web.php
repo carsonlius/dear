@@ -6,7 +6,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function (){
+    return redirect('introduction');
+})->name('home');
 
 // gen role
 Route::group(['prefix' => 'Role', 'middleware' => 'auth'], function () {
@@ -63,22 +66,22 @@ Route::middleware('auth')->get('/introduction', function () {
 Route::group(['prefix' => 'TravelRecord', 'middleware' => 'auth'], function () {
     Route::get('show/{id}', 'TravelRecordController@show');
     Route::get('create', 'TravelRecordController@create');
-    Route::get('index', 'TravelRecordController@index');
+    Route::middleware('permission:TravelRecord/index')->get('index', 'TravelRecordController@index');
     Route::middleware('permission:TravelRecord/zhengzhouShow')->get('zhengzhouShow', 'TravelRecordController@typeShow')->name('zhengzhou');
-    Route::get('shanghaiShow', 'TravelRecordController@typeShow')->name('shanghai');
-    Route::get('luoyangShow', 'TravelRecordController@typeShow')->name('luoyang');
-    Route::get('beijingShow', 'TravelRecordController@typeShow')->name('beijing');
-    Route::get('hubeiShow', 'TravelRecordController@typeShow')->name('hubei');
-    Route::get('otherShow', 'TravelRecordController@typeShow')->name('other');
+    Route::middleware('permission:TravelRecord/shanghaiShow')->get('shanghaiShow', 'TravelRecordController@typeShow')->name('shanghai');
+    Route::middleware('permission:TravelRecord/luoyangShow')->get('luoyangShow', 'TravelRecordController@typeShow')->name('luoyang');
+    Route::middleware('permission:TravelRecord/beijingShow')->get('beijingShow', 'TravelRecordController@typeShow')->name('beijing');
+    Route::middleware('permission:TravelRecord/hubeiShow')->get('hubeiShow', 'TravelRecordController@typeShow')->name('hubei');
+    Route::middleware('permission:TravelRecord/otherShow')->get('otherShow', 'TravelRecordController@typeShow')->name('other');
     Route::get('anywayShow', 'TravelRecordController@typeShow')->name('anyway');
 
     Route::post('store', 'TravelRecordController@store');
 });
 
 // gen photo type
-Route::group(['prefix' => 'PhotoType', 'middleware' => 'auth'], function () {
-    Route::get('index', 'PhotoTypeController@index');
-    Route::get('create', 'PhotoTypeController@create');
+Route::group(['prefix' => 'PhotoType', 'middleware' => ['auth']], function () {
+    Route::middleware('permission:PhotoType/index')->get('index', 'PhotoTypeController@index');
+    Route::middleware('permission:PhotoType/create')->get('create', 'PhotoTypeController@create');
     Route::get('edit/{photoType}', 'PhotoTypeController@edit');
     Route::get('destroy/{photoType}', 'PhotoTypeController@destroy');
 
@@ -87,7 +90,7 @@ Route::group(['prefix' => 'PhotoType', 'middleware' => 'auth'], function () {
 });
 
 // gen node
-Route::group(['prefix' => 'SystemNode', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'SystemNode', 'middleware' => ['auth']], function () {
     Route::get('create', 'SystemNodeController@create');
     Route::get('index', 'SystemNodeController@index');
     Route::get('edit/{systemNode}', 'SystemNodeController@edit');
@@ -99,7 +102,7 @@ Route::group(['prefix' => 'SystemNode', 'middleware' => 'auth'], function () {
 });
 
 // gen protagonist
-Route::group(['prefix' => 'Protagonist', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'Protagonist', 'middleware' => ['auth']], function () {
     Route::get('create', 'ProtagonistController@create');
     Route::get('index', 'ProtagonistController@index');
     Route::get('edit/{protagonist}', 'ProtagonistController@edit');
