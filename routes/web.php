@@ -64,7 +64,7 @@ Route::group(['prefix' => 'TravelRecord', 'middleware' => 'auth'], function () {
     Route::get('show/{id}', 'TravelRecordController@show');
     Route::get('create', 'TravelRecordController@create');
     Route::get('index', 'TravelRecordController@index');
-    Route::middleware('permission:zhengzhouShow')->get('zhengzhouShow', 'TravelRecordController@typeShow')->name('zhengzhou');
+    Route::middleware('permission:TravelRecord/zhengzhouShow')->get('zhengzhouShow', 'TravelRecordController@typeShow')->name('zhengzhou');
     Route::get('shanghaiShow', 'TravelRecordController@typeShow')->name('shanghai');
     Route::get('luoyangShow', 'TravelRecordController@typeShow')->name('luoyang');
     Route::get('beijingShow', 'TravelRecordController@typeShow')->name('beijing');

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.nav_without_right_side')
 @section('content')
     <div class="box-header with-border form-group">
         <span class="box-title content-header">创建角色</span>

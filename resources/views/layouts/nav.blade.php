@@ -7,6 +7,7 @@
         <ul class="primary-nav-menu suckerfish sc">
             {{-- 普通节点的展示 --}}
             @foreach($SystemNodeModel->nodeList() as $node)
+                @permission($node['node'])
                 <li id="primary_nav_menu_item_12" class="text-categories mi-type-internal mi-categories has-children mi-anchor-text" style="padding-top:17px;padding-bottom:10px;">
                     @if($node['node'] == 'home' || $node['node'] == 'introduction')
                         {!! Html::link($node['node'], $node['name'], ['class'=> 'text-categories mi-type-internal mi-categories has-children mi-anchor-text']) !!}
@@ -17,13 +18,16 @@
                     @if(isset($node['child']))
                         <ul style="margin-top:10px;">
                             @foreach($node['child'] as $child)
+                                @permission($child['node'])
                                 <li class="cat-item cat-item-387 current-cat">
-                                    <a href="{{ URL::to($child['node']) }}" target="_blank">{{ $child['name'] }}</a>
+                                    <a href="{{ URL::to($child['node']) }}" target="__self">{{ $child['name'] }}</a>
                                 </li>
+                                @endpermission
                             @endforeach
                         </ul>
                     @endif
                 </li>
+                @endpermission
             @endforeach
             {{-- 没有登陆 --}}
                 @guest

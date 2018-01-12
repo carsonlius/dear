@@ -1,4 +1,4 @@
-@extends('layouts.app');
+@extends('layouts.nav_without_right_side');
 @section('content')
     {!! Html::ol($list_show, ['class' => 'form-group']); !!}
     <table>
