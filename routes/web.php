@@ -6,10 +6,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', function (){
-    return redirect('introduction');
-})->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', function (){
+//    return redirect('introduction');
+//})->name('home');
 
 // gen role
 Route::group(['prefix' => 'Role', 'middleware' => 'auth'], function () {

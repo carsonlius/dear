@@ -41,6 +41,14 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+// load different config file base on env attribution from php.ini
+$env = get_cfg_var('env');
+$env = !empty($env) ? $env : 'prod';
+if(!defined('APP_MODE')){
+    define('APP_MODE', $env);
+}
+$app->loadEnvironmentFrom('.env.'.$env);
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
