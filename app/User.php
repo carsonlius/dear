@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\UserRegisterEvent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Ultraware\Roles\Traits\HasRoleAndPermission;
@@ -10,6 +11,10 @@ use Ultraware\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContra
 class User extends Authenticatable implements HasRoleAndPermissionContract
 {
     use Notifiable,HasRoleAndPermission;
+
+    protected $dispatchesEvents = [
+        'created' => UserRegisterEvent::class
+    ];
 
     /**
      * The attributes that are mass assignable.
