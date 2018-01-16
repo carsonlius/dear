@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\UserRegisterEvent;
+use App\Mail\UserCreateMail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -26,6 +27,6 @@ class UserRegisterListener
      */
     public function handle(UserRegisterEvent $event)
     {
-//        dump('检测到新用户的注册, 新用户邮箱是：' . $event->user->email);
+        \Mail::to('carsonlius@163.com')->send(new UserCreateMail($event->user));
     }
 }
