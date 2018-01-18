@@ -23,6 +23,9 @@ class UserRegisterEvent
      */
     public function __construct(User $user)
     {
+        // 分配游客的角色
+        $user->attachRole(3);
+        $user->count = User::count();
         $this->user = $user;
     }
 

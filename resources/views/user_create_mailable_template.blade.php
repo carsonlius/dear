@@ -1,11 +1,12 @@
 @component('mail::message')
 
-新用户{{ $user->name }}已经在你的网站注册了, 他/她的邮箱是{{ $user->email }}, 劳驾分配角色，优化网站体验
+新用户<span style="font-weight: bold;">{{ $user->name }}</span> 邮箱: <span style="font-weight: bold">{{ $user->email }}</span>
+已经在您的网站注册了, 现在网站总人数是 {{ $user->count }}
 
-@component('mail::button', ['url' => 'http://penglixia.carsonlius.cn/RoleUser/index'])
-分配脚色
+@component('mail::button', ['url' => 'http://penglixia.carsonlius.cn/RoleUser/index', 'color' => 'green'])
+    用户列表
 @endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
+From your own website
 @endcomponent

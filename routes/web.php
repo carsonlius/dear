@@ -110,3 +110,18 @@ Route::group(['prefix' => 'Protagonist', 'middleware' => ['auth']], function () 
     Route::post('store', 'ProtagonistController@store');
     Route::post('update', 'ProtagonistController@update');
 });
+
+
+// 预览邮件效果
+Route::get('/mailable', function () {
+    $user_obj = \App\User::latest()->get()->first();
+    $user_obj->count = \App\User::count();
+
+    return new \App\Mail\UserCreateMail($user_obj);
+});
+
+Route::get('email', function () {
+    $user = \Illuminate\Support\Facades\Auth::user();
+    \Mail::to('carsonlius@163.com')->send(new \App\Mail\UserCreateMail($user));
+
+});
