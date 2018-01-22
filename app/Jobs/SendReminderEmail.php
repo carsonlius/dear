@@ -27,7 +27,6 @@ class SendReminderEmail implements ShouldQueue
     public function __construct(User $user)
     {
         $this->user = $user;
-        var_dump('hello world');
     }
 
     /**
@@ -38,7 +37,6 @@ class SendReminderEmail implements ShouldQueue
     public function handle()
     {
 
-        var_dump('hello world2');
         \Mail::to('carsonlius@163.com')
             ->cc('1332559075@qq.com')
             ->send(new UserCreateMail($this->user));

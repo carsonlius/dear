@@ -20,6 +20,7 @@ class UserCreateMail extends Mailable
      */
     public function __construct(User $user)
     {
+        $user->count = User::count();
         $this->user = $user;
     }
 
@@ -31,8 +32,6 @@ class UserCreateMail extends Mailable
     public function build()
     {
         return $this
-//            ->to('carsonlius@163.com')
-//            ->bcc('penglixia39@163.com')
             ->subject('用户注册事件')
             ->markdown('user_create_mailable_template');
     }

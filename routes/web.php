@@ -131,15 +131,19 @@ Route::get('email', function () {
 
 
 Route::get('dispatchEmail', function (){
-    \App\Jobs\SendReminderEmail::dispatch(\Illuminate\Support\Facades\Auth::user());
+    $user_obj = \App\User::find(1);
+    $user_obj->count = \App\User::count();
+
+    \App\Jobs\SendReminderEmail::dispatch($user_obj);
 });
 
 // 将邮件放入
 Route::get('hello_email', function () {
-    dump('hello world');
+
     $user = \App\User::latest()->get()->first();
     $user->count = \App\User::count();
     $message = (new \App\Mail\UserCreateMail($user))->onQueue('emails');
+//    $message = new \App\Mail\UserCreateMail($user);
 
     \Mail::to('carsonlius@163.com')
         ->cc('1332559075@qq.com')
