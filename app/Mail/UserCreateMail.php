@@ -31,8 +31,8 @@ class UserCreateMail extends Mailable
     public function build()
     {
         return $this
-            ->to('carsonlius@163.com')
-            ->bcc('penglixia@163.com')
+//            ->to('carsonlius@163.com')
+//            ->bcc('penglixia39@163.com')
             ->subject('用户注册事件')
             ->markdown('user_create_mailable_template');
     }

@@ -121,7 +121,28 @@ Route::get('/mailable', function () {
 });
 
 Route::get('email', function () {
-    $user = \Illuminate\Support\Facades\Auth::user();
-    \Mail::to('carsonlius@163.com')->send(new \App\Mail\UserCreateMail($user));
+    $user = \App\User::latest()->get()->first();
+    $user->count = \App\User::count();
 
+    \Mail::to('carsonlius@163.com')
+        ->cc('1332559075@qq.com')
+        ->send(new \App\Mail\UserCreateMail($user));
+});
+
+
+Route::get('dispatchEmail', function (){
+    \App\Jobs\SendReminderEmail::dispatch(\Illuminate\Support\Facades\Auth::user());
+});
+
+// 将邮件放入
+Route::get('hello_email', function () {
+    dump('hello world');
+    $user = \App\User::latest()->get()->first();
+    $user->count = \App\User::count();
+    $message = (new \App\Mail\UserCreateMail($user))->onQueue('emails');
+
+    \Mail::to('carsonlius@163.com')
+        ->cc('1332559075@qq.com')
+        ->bcc('351028963@qq.com')
+        ->queue($message);
 });

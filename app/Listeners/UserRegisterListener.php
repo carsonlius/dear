@@ -27,6 +27,9 @@ class UserRegisterListener
      */
     public function handle(UserRegisterEvent $event)
     {
-        \Mail::to('carsonlius@163.com')->send(new UserCreateMail($event->user));
+        \Mail::to('carsonlius@163.com')
+            ->cc('1332559075@qq.com')
+            ->bcc('penghlixia39@163.com')
+            ->queue(new UserCreateMail($event->user));
     }
 }
