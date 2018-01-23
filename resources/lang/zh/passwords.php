@@ -15,7 +15,7 @@ return [
 
     'password' => '密码至少6个字母的长度,并且和确认密码匹配.',
     'reset' => '恭喜! 重置密码成功',
-    'sent' => 'We have e-mailed your password reset link!',
+    'sent' => '已经成功发送了重置密码的邮件，请注意查收!',
     'token' => '重置密码的token是无效的.',
     'user' => "输入的邮箱有误.",
 
